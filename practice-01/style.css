@@ -60,8 +60,8 @@ header
 .header {
   height: 75px;
   color: #fff;
-  background-color: #333;
-  border-bottom: 1px solid grey;
+  background-color: #000;
+  border-bottom: 1px solid #fff;
 }
 
 .header-container {
@@ -79,12 +79,40 @@ header
 
 .header-nav {
   display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: #333;
+  text-transform: uppercase;
+}
+
+.header-nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .header-nav {
+    display: block;
+    position: relative;
+    background-color: transparent;
+  }
+
+  .header-nav ul {
+    flex-direction: row;
+
+  }
 }
 
 .nav-btn {
   width: 25px;
   height: 16px;
   cursor: pointer;
+  z-index: 150;
 }
 
 .bar,
@@ -96,6 +124,7 @@ header
   height: 2px;
   background: #fff;
   position: absolute;
+  transition: .3s;
 }
 
 .bar::before {
@@ -106,13 +135,26 @@ header
   top: 8px;
 }
 
+.bar.close {
+  background-color: rgba(255, 255, 255, 0);
+  transition: .3s;
+}
+
+.bar.close::before {
+  bottom: 0;
+  transform: rotate(45deg);
+  transition: .3s;
+}
+
+.bar.close::after {
+  top: 0;
+  transform: rotate(-45deg);
+  transition: .3s;
+}
+
 @media screen and (min-width: 768px) {
   .nav-btn {
     display: none;
-  }
-
-  .header-nav {
-    display: block;
   }
 }
 
@@ -123,7 +165,7 @@ hero
   height: calc(100vh - 75px);
   display: grid;
   place-items: center;
-  background: url("../img/fv-bgi_sp@2x.jpg") center center / cover;
+  background: url("../img/fv-bgi@2x.jpg") center center / cover;
 }
 
 @media screen and (min-width: 768px) {
@@ -168,7 +210,7 @@ service
   .img-text img {
     display: inline-block;
     flex: 1;
-    width: min(100%,480px);
+    width: min(100%, 480px);
   }
 
   .img-text .text {
@@ -181,13 +223,15 @@ service
   flex-direction: column;
   gap: 50px;
 }
+
 @media screen and (min-width: 768px) {
   .card-list {
     flex-direction: row;
     gap: 30px;
   }
-  
+
 }
+
 .card {
   max-width: 320px;
   margin: auto;
@@ -206,7 +250,7 @@ contact
   margin: auto;
 }
 
-input,textarea {
+input, textarea {
   border: 1px solid #333;
   font-size: 1.4rem;
   line-height: 2;
@@ -216,6 +260,7 @@ input,textarea {
 label {
   margin-bottom: 5px;
 }
+
 .form-item {
   display: flex;
   flex-direction: column;
@@ -223,7 +268,7 @@ label {
 }
 
 textarea {
-  height:171px;
+  height: 171px;
   resize: none;
 }
 
