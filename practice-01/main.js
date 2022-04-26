@@ -7,7 +7,7 @@ $('.nav-btn').click(function(){
 if ($(window).width() < 768) {
   $('.nav-item').click(function(){
     $('.header-nav').fadeOut(500);
-    $('.bar').removeClass('.close');
+    $('.bar').removeClass('close');
     $('body').removeClass('noscroll');
   });
 }
